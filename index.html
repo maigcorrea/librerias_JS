@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @keyframes animar {
+            0%{
+                transform: translateX(-1000px);
+            }
+            100%{
+                transform: translateX(1000px);
+            }
+        }
+        .efecto{
+            animation: animar 5s infinite;
+        }
+        .lista{
+            color: red;
+        } */
+
+        div{
+            max-width: 50%;
+            border: solid 1px black;
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-between;
+            p{
+                /* display: none; */
+                width: 100%;
+            }
+            button{
+                background-color: pink;
+                border:none;
+                padding: 10px;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
+        .mostrar{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <h1>Titulo</h1>
+        <img src="https://picsum.photos/200/300" alt="">
+        <p>Parrafo 1</p>
+        <p>Parrafo 2</p>
+        <p>Parrafo 3</p>
+    </div> -->
+
+    <!-- <div id="caja">texto1
+         <img src="https://static.vecteezy.com/system/resources/previews/015/633/098/non_2x/car-icon-and-car-drawing-vector.jpg" alt=""> 
+         <h1>Titulo</h1>
+         <h2>titulo2</h2>
+         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, deleniti!</p>
+         <a href="funcionamiento.html">Enlace</a>
+    </div> -->
+
+    <!-- <ul>
+        <li>elemento1</li>
+        <li>elemento2</li>
+        <li class="lista">elemento3</li>
+        <li class="lista">elemento4</li>
+        <li class="lista">elemento5</li>
+        <li>elemento6</li>
+        <li>elemento7</li>
+        <li>elemento8</li>
+        <li>elemento9</li>
+        <li>elemento10</li>
+    </ul> -->
+
+    <!-- <ul>
+        <li>elemento1</li>
+        <li>elemento2</li>
+        <li>elemento3</li>
+        <li>elemento4</li>
+        <li>elemento5</li>
+        <li>elemento6</li>
+        <li>elemento7</li>
+        <li>elemento8</li>
+        <li>elemento9</li>
+        <li>elemento10</li>
+    </ul>
+    <button>Botón</button> -->
+
+    <div>
+        <span>Titulo1</span><button>+</button>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, corporis.</p>
+    </div>
+    <div>
+        <span>Titulo2</span><button>+</button>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, corporis.</p>
+    </div>
+    <div>
+        <span>Titulo3</span><button>+</button>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, corporis.</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">//Añadir libreria</script>
+    
+    <script>
+        $(document).ready(()=>{ //Es lo mismo que el domContentLoaded
+            //CheatSheet: https://oscarotero.com/jquery/
+
+            // $("div p:first-child").hide(500);
+
+            //Crear etiquetas de forma dinámica
+            // const miDiv= $("<div>Texto del div</div>");
+            // $("body").append(miDiv);
+
+            //Añadir texto
+            // $("div#caja").text("Texto de la caja");
+            // $("div#caja").html("<h1>Texto de la caja</h1>");
+            // $("div#caja").append("<h1>Texto de la caja</h1>");
+
+            //Añadir clases
+            // $("div#caja").addClass("efecto");
+            
+            //Quitar clases
+            // $("div#caja").removeClass("efecto");
+
+            //Seleccionar elementos
+            // $("li").first().hide();
+            // $("li").last().hide();
+            // $("li").first().next().hide();//Oculta el segundo elemento
+            // $("li:nth-child(6)").prev().hide();//Oculta el quinto elemento
+            // $("li:nth-child(6)").hide();
+            // $("li").eq(7).hide();//oculta el 8 elemento seleccionandolo dentro del array generado al seleccionar todos los li
+
+            //Filtrar
+            // $("li").filter(".lista").hide();
+            // $("li").not(".lista").hide(); //Lo contrario a filter
+
+            //Seleccionar el padre
+            // $("h2").parent().hide(5000);
+
+            //Seleccionar el hijo
+            // $("div#caja").children().hide(5000);
+
+            //Seleccionar los hermanos
+            // $("h2").siblings().hide(5000);
+
+            //Cambiar atributos
+            // $("a").attr("href","https://google.es");
+
+            //EVENTOS
+            // $("button").click();//Primera forma
+            // $("button").on("click",function(){ //Segunda forma
+            //     alert("hola");
+            // })
+
+            //Eliminar evento
+            // $("button").off("click");
+
+            //Animaciones
+            $("p").hide();
+
+            $("button").on("click",function(){
+                $(this).next().show(2000);
+            })
+        });
+    </script>
+</body>
+</html>
