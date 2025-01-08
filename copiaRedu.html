@@ -74,10 +74,14 @@
 			
 			$(function(){//Es lo mismo que poner ready
                 $("button").on("click",function(){
+
                     $(this).next().slideToggle(500);
                     console.log($(this).text());
                 
                     $(this).text() === "+" ? $(this).text("-") : $(this).text("+");
+
+                    $(this).parent().siblings("div").children("p").slideUp(500);
+                    $(this).parent().siblings().children("button").text("+");
                 });
             });
 		</script>
