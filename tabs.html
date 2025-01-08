@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            body{
+                font-family: "system-ui";
+            }
+
+            ul,li{
+                list-style: none;
+            }
+
+            div.tabs{
+                max-width: 50%;
+                margin: auto;
+                /* border: solid 1px slateblue; */
+
+                ul{
+                    border: solid 1px slateblue;
+                    display: flex;
+                    li{
+                        /* margin-right: 20px; */
+                        border-right: solid 1px slateblue;
+                        padding: 20px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        &:first-child{
+                            background-color: slateblue;
+                            color: white;
+                        }
+                    }
+                }
+
+                section{
+                    padding: 20px;
+                    border:solid 1px slateblue;
+                    &+section{
+                        display: none;
+                    }
+                }
+            }
+
+            .seleccionado{
+                background-color: slateblue;
+                color: white;
+            }
+		</style>
+	</head>
+	<body>
+
+		<div class="tabs">
+            <ul>
+                <li>Pestaña1</li>
+                <li>Pestaña2</li>
+                <li>Pestaña3</li>
+            </ul>
+            <section id="sec1">
+                <h2>Sección 1</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, hic quasi culpa optio facilis porro esse deleniti quis veniam debitis?</p>
+            </section>
+
+            <section id="sec2">
+                <h2>Sección 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, hic quasi culpa optio facilis porro esse deleniti quis veniam debitis?</p>
+            </section>
+
+            <section id="sec3">
+                <h2>Sección 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, hic quasi culpa optio facilis porro esse deleniti quis veniam debitis?</p>
+            </section>
+        </div>
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+		<script>
+			
+			$(function(){//Es lo mismo que poner ready
+                // $("div.tabs section:nth-child(2)").css({
+                //     background:"red",
+                // });
+
+                $("div.tabs li").on("click",function(){
+                    let contenido=$(this).text();
+                    if(contenido.includes("1")){
+                        $("section#sec1").siblings("section").hide();
+                        $("section#sec1").show();
+                        $(this).addClass("seleccionado");
+                    }else if(contenido.includes("2")){
+                        $("section#sec2").siblings("section").hide();
+                        $("section#sec2").show();
+                        $(this).addClass("seleccionado");
+                    }else{
+                        $("section#sec3").siblings("section").hide();
+                        $("section#sec3").show();
+                        $(this).addClass("seleccionado");
+                    }
+                })
+            });
+		</script>
+	</body>
+</html>
