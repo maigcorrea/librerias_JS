@@ -81,6 +81,7 @@
                     $(this).text() === "+" ? $(this).text("-") : $(this).text("+");
 
                     $(this).parent().siblings("div").children("p").slideUp(500);
+                    // $(this).parent().siblings("div").find("p").slideUp(500);
                     $(this).parent().siblings().children("button").text("+");
                 });
             });
