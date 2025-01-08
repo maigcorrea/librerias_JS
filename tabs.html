@@ -107,17 +107,17 @@
                 $(".tabs ul li:first").addClass("seleccionado");
 
                 $("div.tabs ul li").on("click",function(){
-                    //Obtener posición de la pestaña en la que se hizo click
+                    //Obtener posición de la pestaña en la que se hizo click (li en el que se hizo click) dentro del conjunto de todos los li
                     const index=$(this).index();
 
-                    //Quitar estilos del li anteriormente seleccionado y esconder su contenido
+                    //Quitar estilos del li anteriormente seleccionado (y de todos los demás) y esconder su contenido (y el de todos los demás) para luego aplicarselos al nuevo li seleccionado y su correspondiente contenido
                     $(".tabs ul li").removeClass("seleccionado");
                     $(".tabs section").hide();
 
                     //Dar estilo al nuevo li que se ha seleccionado
                     $(this).addClass("seleccionado");
 
-                    //Mostrar la sección correspondiente(La que contenga en su id o en alguna otra parte del contenido el número de posición en la lista del li al que se le ha dado click)
+                    //Mostrar la sección correspondiente. La que tenga la misma posición (dentro del conjunto de todas las section) que el li seleccionado
                     $(".tabs section").eq(index).show();
                 });
             });
