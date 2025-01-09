@@ -19,13 +19,18 @@
             font-size: 1.5rem;
         } */
 
-        .circulo{
+         .circulo{
             position: absolute;
-            width: 50px;
+            /* width: 50px;
             height: 50px;
             border-radius: 50%;
             background-color: tomato;
-            cursor: pointer;
+            cursor: pointer; */
+        } 
+
+        .circulo img{
+            width: 100px;
+            height: auto;
         }
 
         .marcador{
@@ -67,11 +72,8 @@
 </head>
 <body>
     
-
-    <!-- <input type="button" value="Actualizar" onclick="location.reload()"/> -->
-    
     <div class="contenedor">
-        <div class="circulo"></div>
+        <div class="circulo"><img src="" class=""></div>
     </div>
 
     <div class="marcador">
@@ -80,13 +82,14 @@
     </div>
 
     <div class="reiniciar">
+        <!-- Botón para reiniciar el juego -->
         <button onclick="location.reload()">Reiniciar juego</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
-            
+
             //Se calcula el alto y el ancho del contenedor del elemento a dar click
             const ancho=$(".contenedor").width()-100;
             const alto=$(".contenedor").height()-100;
@@ -111,8 +114,27 @@
                 
 
                 
-                //Por cada segundo del intervalo, se calcula la nueva posición random en la pantalla del elemendo a dar click, y se mueve a esa nueva posición
+                //Por cada segundo del intervalo, se elige que imagen es la que va a salir a partir de un número random y se calcula la nueva posición aleatoria en la pantalla del elemendo a dar click, y se mueve a esa nueva posición
                 let juego=setInterval(function(){
+                    //Generar número random (0 o 1) para elegir la imagen que se muestra
+                    let numImagen=Math.round(Math.random());
+                    console.log(numImagen);
+
+                    //Se elimina la clase que pueda tener para luego asignarle una específica en función de la imagen que salga.
+                    $(".circulo img").removeClass();
+
+                    //Si es 0 es zombie, si es 1 es persona
+                    if(numImagen===0){
+                        $(".circulo img").attr("src","./img/zombie1.png");
+                        $(".circulo img").addClass("zombie");
+
+                    }else if(numImagen===1){
+
+                        $(".circulo img").attr("src","./img/persona.png");
+                        $(".circulo img").addClass("persona");
+                    }
+
+
                     //Nueva posición en el eje x/y
                     let randomX=Math.random() * ancho ;
                     let randomY=Math.random()* alto ;
@@ -135,7 +157,6 @@
                     clearInterval(intervaloTiempo);
                     $(".circulo").hide();
                     $("button").show();
-                    // alert("Fin del juego");
                 }
 
                 
@@ -144,12 +165,19 @@
 
             
 
-
-            
-            
-            //Cuando se le da click al elemento, se actualiza la puntuación sumándole 1 punto y modificando los puntos visibles
+            //La puntuación se controla en función de la clase que tenga la imagen. Al darle click al div que contiene la imagen, si esta tiene la clase zombie, se actualiza la puntuación sumandole 1, si tiene la clase persona, se considera como un fallo y se resta 1 punto 
             $(".circulo").on("click",function(){
-                score+=1;
+                if($(".circulo img").hasClass("zombie")){
+                    score+=1; 
+                }else{
+                    score-=1;
+                }
+
+                //Si la puntuación es menor de 0, se muestra que está en 0
+                if(score<0){
+                    score=0;
+                }
+
                 $(".score").text(score);
             })
 
