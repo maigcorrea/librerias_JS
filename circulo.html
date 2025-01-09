@@ -10,14 +10,14 @@
             padding: 0;
         }
 
-        body{
+        /* body{
             width: 100vh;
             height: 100vh;
             display: flex;
             text-align: center;
             font-family: "system-ui";
             font-size: 1.5rem;
-        }
+        } */
 
         .circulo{
             position: absolute;
@@ -28,68 +28,114 @@
             cursor: pointer;
         }
 
-        .score{
+        .marcador{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 50vh;
+            margin: auto;
+            border: solid 3px red;
             font-family: "system-ui";
             font-size: 1.5rem;
         }
 
+        /* .score{
+            font-family: "system-ui";
+            font-size: 1.5rem;
+        } */
+
         .contenedor{
             position: relative;
+            margin: 20px auto;
             width: 80vh;
+            height: 80vh;
             border: solid 1px black;
+        }
+
+        .reiniciar{
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div>
-        <p>Score: <span class="score">0</span></p>
-    </div>
-    <div>
-        <p>Tiempo: <span class="tiempo"></span>s</p>
-    </div>
+    
+
+    <!-- <input type="button" value="Actualizar" onclick="location.reload()"/> -->
+    
     <div class="contenedor">
         <div class="circulo"></div>
     </div>
+
+    <div class="marcador">
+        <p>Score: <span class="score">0</span></p>
+        <p>Tiempo: <span class="tiempo"></span>s</p>
+    </div>
+
+    <div class="reiniciar">
+        <button onclick="location.reload()">Reiniciar juego</button>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
             
-
+            //Se calcula el alto y el ancho del contenedor del elemento a dar click
             const ancho=$(".contenedor").width()-100;
             const alto=$(".contenedor").height()-100;
+
+            //Se establece un tiempo inicial para la duración del juego
             let tiempo=10;
             $(".tiempo").text(tiempo);
 
+            //Se establece una puntuación inicial de 0
+            let score=0;
+            $(".score").text(score);
+
+            //Se esconde el botón para reiniciar el juego puesto que sólo debe salir una vez se haya finalizado
+            $("button").hide();
+
             
 
-
-            let intervalo=setInterval(function(){
+            //Se establece un intervalo en el que por cada segundo que pase, se actualiza el tiempo que queda de juego, restandole 1s para que vaya haciendo una cuenta atrás hasta llegar a 0s
+            let intervaloTiempo=setInterval(function(){
                 tiempo-=1;
                 $(".tiempo").text(tiempo);
                 
 
                 
-
+                //Por cada segundo del intervalo, se calcula la nueva posición random en la pantalla del elemendo a dar click, y se mueve a esa nueva posición
                 let juego=setInterval(function(){
+                    //Nueva posición en el eje x/y
                     let randomX=Math.random() * ancho ;
                     let randomY=Math.random()* alto ;
-                    // console.log(randomX);
-                    // console.log(randomY);
                     
+                    //Se establece la nueva posición
                     $(".circulo").css({
                         "top":randomY+"px",
                         "left":randomX+"px"
                     })
 
+                    //Cuando el tiempo llegue a 0s se elimina el intervalo, por lo que el elemento para de moverse por la pantalla y se queda fijo 
                     if(tiempo==0){
                         clearInterval(juego);
                     }
+
                 },1000);
 
+                //Cuando el tiempo llegue a 0s se elimina el intervalo y se esconde el elemento para que el usuario no pueda seguir dando clicks ni consiguiendo puntos una vez ha finalizado el juego
                 if(tiempo==0){
-                    clearInterval(intervalo);
+                    clearInterval(intervaloTiempo);
                     $(".circulo").hide();
-                    alert("Fin del juego");
+                    $("button").show();
+                    // alert("Fin del juego");
                 }
 
                 
@@ -99,13 +145,12 @@
             
 
 
-            $(".score").text("0");
             
-
+            
+            //Cuando se le da click al elemento, se actualiza la puntuación sumándole 1 punto y modificando los puntos visibles
             $(".circulo").on("click",function(){
-                let value=$(".score").text();
-                let num=parseInt(value)+1;
-                $(".score").text(num);
+                score+=1;
+                $(".score").text(score);
             })
 
 
