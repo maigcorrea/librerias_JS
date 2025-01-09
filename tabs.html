@@ -57,6 +57,9 @@
 	</head>
 	<body>
 
+        <button>click</button>
+        <p>holaaaa</p>
+
 		<div class="tabs">
             <ul>
                 <li>Pestaña1</li>
@@ -121,6 +124,13 @@
                     //Mostrar la sección correspondiente. La que tenga la misma posición (dentro del conjunto de todas las section) que el li seleccionado
                     $(".tabs section").eq(index).fadeIn();
                 });
+
+
+                $("button").click(function(){
+                    $(this).next().hide(3000,function(){
+                        alert("Ya está oculto");
+                    })
+                })
             });
 		</script>
 	</body>
