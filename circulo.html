@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 100vh;
+            height: 100vh;
+            display: flex;
+            text-align: center;
+            font-family: "system-ui";
+            font-size: 1.5rem;
+        }
+
+        .circulo{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: tomato;
+            cursor: pointer;
+        }
+
+        .score{
+            font-family: "system-ui";
+            font-size: 1.5rem;
+        }
+
+        .contenedor{
+            position: relative;
+            width: 80vh;
+            border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Score: <span class="score">0</span></p>
+    </div>
+    <div>
+        <p>Tiempo: <span class="tiempo"></span>s</p>
+    </div>
+    <div class="contenedor">
+        <div class="circulo"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            
+
+            const ancho=$(".contenedor").width()-100;
+            const alto=$(".contenedor").height()-100;
+            let tiempo=10;
+            $(".tiempo").text(tiempo);
+
+            
+
+
+            let intervalo=setInterval(function(){
+                tiempo-=1;
+                $(".tiempo").text(tiempo);
+                
+
+                
+
+                let juego=setInterval(function(){
+                    let randomX=Math.random() * ancho ;
+                    let randomY=Math.random()* alto ;
+                    // console.log(randomX);
+                    // console.log(randomY);
+                    
+                    $(".circulo").css({
+                        "top":randomY+"px",
+                        "left":randomX+"px"
+                    })
+
+                    if(tiempo==0){
+                        clearInterval(juego);
+                    }
+                },1000);
+
+                if(tiempo==0){
+                    clearInterval(intervalo);
+                    $(".circulo").hide();
+                    alert("Fin del juego");
+                }
+
+                
+
+            },1000);
+
+            
+
+
+            $(".score").text("0");
+            
+
+            $(".circulo").on("click",function(){
+                let value=$(".score").text();
+                let num=parseInt(value)+1;
+                $(".score").text(num);
+            })
+
+
+
+        });
+    </script>
+</body>
+</html>
