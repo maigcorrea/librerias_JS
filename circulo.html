@@ -10,22 +10,22 @@
             padding: 0;
         }
 
-        /* body{
-            width: 100vh;
-            height: 100vh;
-            display: flex;
-            text-align: center;
+        body{
+            background-image: url(./img/astral-concept-wallpaper.jpg);
+            background-size: cover;
+            color: white;
             font-family: "system-ui";
-            font-size: 1.5rem;
-        } */
+        }
 
-         .circulo{
+        h1{
+            text-align: center;
+            margin: 0 105px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+        }
+
+        .circulo{
             position: absolute;
-            /* width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: tomato;
-            cursor: pointer; */
         } 
 
         .circulo img{
@@ -35,60 +35,159 @@
 
         .marcador{
             display: flex;
-            justify-content: space-around;
+            gap: 50px;
             align-items: center;
-            max-width: 50vh;
+            max-width: 100vh;
             margin: auto;
-            border: solid 3px red;
+            background-color: black;
             font-family: "system-ui";
             font-size: 1.5rem;
+            padding: 3px 20px;
         }
 
-        /* .score{
-            font-family: "system-ui";
-            font-size: 1.5rem;
-        } */
+        .general{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px;
+            gap: 30px;
+        }
 
         .contenedor{
             position: relative;
-            margin: 20px auto;
             width: 80vh;
-            height: 80vh;
+            height: 70vh;
             border: solid 1px black;
+            background-color: rgb(21, 21, 26);
         }
 
-        .reiniciar{
+        .marcador-container{
             display: flex;
-            justify-content: center;
-            align-items: center; 
+            width: 500px;
+            margin: auto;
         }
 
-        button{
-            margin-top: 20px;
+        .btn-glow {
+            color: #fff !important;
+            display: flex;
+            background: rgb(138, 97, 248);
+            background: -moz-linear-gradient(left, rgba(138, 97, 248, 1) 0%, rgba(236, 95, 231, 1) 100%);
+            background: -webkit-linear-gradient(left, rgba(138, 97, 248, 1) 0%, rgba(236, 95, 231, 1) 100%);
+            background: linear-gradient(to right, rgba(138, 97, 248, 1) 0%, rgba(236, 95, 231, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a61f8', endColorstr='#ec5fe7',GradientType=1 );
+            border: none;
             padding: 10px;
             cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: none;
+            animation: glow 3s infinite;
+            animation-timing-function: ease-out;
+            position: relative;
         }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 0 10px #3daaa200;
+            transition: .8s;
+        }
+
+        @keyframes glow{
+            0% { box-shadow: 0 0 20px #8b61f844; text-shadow:  0 0 0px #fff; }
+            40% { box-shadow: 0 0 100px #8b61f8ee; text-shadow:  0 0 20px #fff;}
+            100% { box-shadow: 0 0 20px #8b61f844; text-shadow:  0 0 1px #fff; }
+        }
+
+        .btn-hover-shine {
+            position: relative;
+        }
+
+        .btn-hover-shine:after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 0;
+            height: 100%;
+            right: 80%;
+            width: 1px;
+            background-color: #ffffff00;
+            box-shadow: 0 0 20px #ffd2fe00, 0 0 10px #ffd2fe00, 0 0 5px #ffd2fe00, 0 0 2px #ffd2fe00;
+            opacity: 1;
+        }
+
+        .btn-hover-shine:hover:after {
+            right: 2%;
+            background-color: #ffffffff;
+            box-shadow: 0 0 30px #ffd2feff, 0 0 15px #ffd2feff, 0 0 7px #ffd2feff, 0 0 3px #ffd2feff;
+            opacity: 0;
+            transition: 0.6s;
+            -webkit-transition: 0.6s;
+        }
+
+        table{
+            text-align: center;
+            border: solid 1px white;
+        }
+
+        tr,td{
+            border-top: solid 1px white;
+            border-collapse: collapse;
+        }
+
     </style>
 </head>
 <body>
+    <h1>Los alienigenas nos atacan! Capturalos antes de que nos invadan. CUIDADO!⚠️ SI LE DAS POR ERROR A UN METEORITO PERDERÁS 1 PUNTO</h1>
     
-    <div class="contenedor">
-        <div class="circulo"><img src="" class=""></div>
-    </div>
+    
+        <div class="general">
+            <!-- Tabla donde se guardarán los puntos obtenidos cada vez que se juegue -->
+            <table>
+                <tr><th>Tabla de puntuaciones</th></tr>
+                <tr></tr>
+            </table>
 
-    <div class="marcador">
-        <p>Score: <span class="score">0</span></p>
-        <p>Tiempo: <span class="tiempo"></span>s</p>
-    </div>
+            <div class="contenedor">
+                <div class="circulo"><img src="" class=""></div>
+            </div>
+        </div>
+    
+        <div class="marcador-container">
+            <div class="marcador">
+                <p>Score: <span class="score">0</span></p>
+                <p>Tiempo: <span class="tiempo"></span>s</p>
+            </div>
+        
+            <div class="reiniciar">
+                <!-- Botón para reiniciar el juego -->
+                <button class="btn-glow btn-hover-shine" onclick="location.reload()">Reiniciar juego</button>
+            </div>
+        </div>
 
-    <div class="reiniciar">
-        <!-- Botón para reiniciar el juego -->
-        <button onclick="location.reload()">Reiniciar juego</button>
-    </div>
+        
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
+            //Si hay algo en el localStorage, se mete en el array
+            let puntosAlmacenados=JSON.parse(localStorage.getItem("puntos"))||[];
+
+            //Si el array tiene al menos 1 elemento, se recorre y se crea un tr y td por cada elemento, y se añade a la tabla
+            if(puntosAlmacenados.length>0){
+                $.each(puntosAlmacenados,function(key,value){
+                    const tr=$("<tr></tr>");
+
+                    const td=$("<td></td>");
+                    td.text(value);
+
+                    tr.append(td);
+                    $("table").append(tr);
+                })
+                
+            }
 
             //Se calcula el alto y el ancho del contenedor del elemento a dar click
             const ancho=$(".contenedor").width()-100;
@@ -101,36 +200,28 @@
             //Se establece una puntuación inicial de 0
             let score=0;
             $(".score").text(score);
+            let arrPuntos=JSON.parse(localStorage.getItem("puntos"))||[];//Array para almacenar los puntos de cada juego en el localStorage
 
             //Se esconde el botón para reiniciar el juego puesto que sólo debe salir una vez se haya finalizado
             $("button").hide();
 
-            
 
-            //Se establece un intervalo en el que por cada segundo que pase, se actualiza el tiempo que queda de juego, restandole 1s para que vaya haciendo una cuenta atrás hasta llegar a 0s
-            let intervaloTiempo=setInterval(function(){
-                tiempo-=1;
-                $(".tiempo").text(tiempo);
-                
-
-                
-                //Por cada segundo del intervalo, se elige que imagen es la que va a salir a partir de un número random y se calcula la nueva posición aleatoria en la pantalla del elemendo a dar click, y se mueve a esa nueva posición
-                let juego=setInterval(function(){
+            //Por cada segundo del intervalo, se elige que imagen es la que va a salir a partir de un número random y se calcula la nueva posición aleatoria en la pantalla del elemendo a dar click, y se mueve a esa nueva posición
+            let juego=setInterval(function(){
                     //Generar número random (0 o 1) para elegir la imagen que se muestra
                     let numImagen=Math.round(Math.random());
-                    console.log(numImagen);
 
                     //Se elimina la clase que pueda tener para luego asignarle una específica en función de la imagen que salga.
                     $(".circulo img").removeClass();
 
                     //Si es 0 es zombie, si es 1 es persona
                     if(numImagen===0){
-                        $(".circulo img").attr("src","./img/zombie1.png");
+                        $(".circulo img").attr("src","./img/alien.png");
                         $(".circulo img").addClass("zombie");
 
                     }else if(numImagen===1){
 
-                        $(".circulo img").attr("src","./img/persona.png");
+                        $(".circulo img").attr("src","./img/meteorito.png");
                         $(".circulo img").addClass("persona");
                     }
 
@@ -145,16 +236,31 @@
                         "left":randomX+"px"
                     })
 
-                    //Cuando el tiempo llegue a 0s se elimina el intervalo, por lo que el elemento para de moverse por la pantalla y se queda fijo 
-                    if(tiempo==0){
-                        clearInterval(juego);
-                    }
-
                 },1000);
 
-                //Cuando el tiempo llegue a 0s se elimina el intervalo y se esconde el elemento para que el usuario no pueda seguir dando clicks ni consiguiendo puntos una vez ha finalizado el juego
+            
+
+            //Se establece un intervalo en el que por cada segundo que pase, se actualiza el tiempo que queda de juego, restandole 1s para que vaya haciendo una cuenta atrás hasta llegar a 0s
+            let intervaloTiempo=setInterval(function(){
+                tiempo-=1;
+                $(".tiempo").text(tiempo);
+                
+                
+
+                //Cuando el tiempo llegue a 0s se eliminan los dos intervalos, se añade la puntuación obtenida al array de puntos y este se mete dentro del localStorage, también se esconde el elemento para que el usuario no pueda seguir dando clicks ni consiguiendo puntos una vez ha finalizado el juego
                 if(tiempo==0){
+                    localStorage.clear();
+
+                    if(score!=0){
+                        arrPuntos.push(score);
+                    }
+
+                    arrPuntos.sort((a,b)=>{return b-a})
+                    localStorage.setItem("puntos",JSON.stringify(arrPuntos));
+
+                    clearInterval(juego);
                     clearInterval(intervaloTiempo);
+
                     $(".circulo").hide();
                     $("button").show();
                 }
@@ -162,6 +268,7 @@
                 
 
             },1000);
+
 
             
 
@@ -180,6 +287,9 @@
 
                 $(".score").text(score);
             })
+
+
+            
 
 
 
