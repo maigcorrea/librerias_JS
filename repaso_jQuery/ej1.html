@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Crea una página con un párrafo oculto por defecto. Crea un botón que
+    muestre y oculte ese párrafo cada vez que se haga clic sobre él. -->
+
+    <p>Hola mundo, soy un párrafo</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //Esconder párrafo
+            $("p").hide();
+
+            //Crear botón
+            const button = $("<button>Presionar para mostrar/ocultar</button>");
+            $("body").append(button);
+
+            button.on("click",function(){
+                $("p").toggle();
+            })
+        })
+    </script>
+</body>
+</html>
