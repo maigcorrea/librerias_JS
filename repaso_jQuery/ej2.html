@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Cuando el usuario hace clic en un botón, cambia el color de fondo de la
+    página a un color aleatorio. -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //Array de colores
+            const colores=["red","blue","yellow","green","orange"];
+
+            //Crear botón
+            const button=$("<button>Cambiar color</button>");
+
+            $("body").append(button);
+            
+            //Añadir funcionalidad al botón
+            button.on("click",function(){
+                //Generar número aleatorio
+                const num=Math.round(Math.random()*(colores.length-1));
+
+                //Pillar el color que coincida en posición con el número
+                const color=colores[num];
+
+                //Cambiar el color de fondo
+                $("body").css("background-color",color);
+
+            })
+        })
+    </script>
+</body>
+</html>
