@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //Crear contador
+            const contador=$("<p></p>");
+            let num=0;
+            contador.text(num);
+
+            $("body").append(contador);
+
+            //Crear botón
+            const button=$("<button>Click</button>");
+            $("body").append(button);
+
+            //Dar funcionalidad al botón
+            button.on("click",function(){
+                num++;
+                contador.text(num);
+            })
+
+
+        })
+    </script>
+</body>
+</html>
