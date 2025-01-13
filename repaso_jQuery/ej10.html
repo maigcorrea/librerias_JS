@@ -7,6 +7,15 @@
     <style>
         li{
             cursor:grab;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+        }
+
+        li.dragging {
+            opacity: 0.5; /* Reduce la opacidad del elemento arrastrado */
+            background-color: #ddd; /* Cambia el color para distinguir que está siendo arrastrado */
         }
     </style>
 </head>
@@ -15,17 +24,46 @@
     arrastrando -->
 
     <ol>
-        <li>Hola</li>
-        <li>Mundo</li>
-        <li>JavaScript</li>
-        <li>PHP</li>
+        <li draggable="true">Hola</li>
+        <li draggable="true">Mundo</li>
+        <li draggable="true">JavaScript</li>
+        <li draggable="true">PHP</li>
     </ol>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
-            $("li").on("drag",function(){
-                console.log("si");
-            })
+            // $("li").on("drag",function(){
+            //     console.log("si");
+            // })
+
+            let draggedElement = null; // Variable para almacenar el elemento que está siendo arrastrado
+
+            // Evento que se dispara cuando el usuario comienza a arrastrar un elemento
+            $("li").on("dragstart", function(e) {
+                draggedElement = this; // Guarda el elemento que se está arrastrando
+                $(this).addClass("dragging"); // Añade una clase para estilizar el elemento arrastrado
+            });
+
+            // Evento que se dispara cuando el usuario termina de arrastrar el elemento
+            $("li").on("dragend", function(e) {
+                $(this).removeClass("dragging"); // Elimina la clase de estilo al terminar el arrastre
+            });
+
+            // Evento que ocurre cuando el elemento arrastrado pasa sobre otro elemento
+            $("li").on("dragover", function(e) {
+                e.preventDefault(); // Permite que el elemento se suelte en este lugar (habilita el evento "drop")
+            });
+
+            // Evento que se dispara cuando el usuario suelta el elemento sobre otro
+            $("li").on("drop", function(e) {
+                e.preventDefault(); // Evita el comportamiento por defecto (como abrir un enlace)
+                
+                if (draggedElement !== this) { 
+                    // Si el elemento arrastrado no es el mismo que el elemento donde se suelta
+                    $(this).before(draggedElement); 
+                    // Mueve el elemento arrastrado antes del elemento donde se suelta
+                }
+            });
         })
     </script>
 </body>
