@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        img:nth-child(){
+            width: 100%;
+            position: absolute;
+            right: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Implementa un carrusel de imágenes donde el usuario pueda navegar
+    entre imágenes mediante botones de "Siguiente" y "Anterior". -->
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            const img1=$("<img src='./img/fairy.jpg'>");
+            const img2=$("<img src='./img/gato.jpg'>");
+
+            div.append(img1,img2);
+            $("body").append(div);
+
+        })
+    </script>
+</body>
+</html>
