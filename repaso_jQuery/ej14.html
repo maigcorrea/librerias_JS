@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .principal{
+            width: 100px;
+            height: 50px;
+            border: solid 3px black;
+            overflow: hidden;
+        }
+
+        .secundario{
+            width: 0px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="principal">
+        <div class="secundario"></div>
+    </div>
+
+    <p>0%</p>
+    <button>Click</button>
+    <!-- Crea una barra de progreso que aumente el valor de su progreso al hacer clic en
+    un botón. -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            let ancho=0;
+
+            $("button").on("click",function(){
+                const valor=20;
+                ancho+=valor;
+                if(ancho>=100){
+                    $("p").text("100%");                   
+                }else{
+                    $("p").text(ancho+"%");
+                }
+                $(".secundario").css("width",ancho+"px");
+
+            })
+        })
+    </script>
+</body>
+</html>
