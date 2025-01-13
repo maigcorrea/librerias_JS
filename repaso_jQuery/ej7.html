@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 300px;
+            border: solid 5px red;
+            overflow: hidden;
+        }
+
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Crea una imagen que, cuando se haga clic sobre ella, cambie su fuente
+    src por otra imagen de tu elección. -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            const img=$("<img src='./img/fairy.jpg'>");
+            div.append(img)
+
+            img.on("click",function(){
+                img.attr("src","./img/gato.jpg");
+            })
+
+            $("body").append(div);
+        })
+    </script>
+</body>
+</html>
