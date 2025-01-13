@@ -11,7 +11,7 @@
             flex-wrap: wrap;
         }
 
-        .grupo1 img{
+        img{
             width: 20%;
         }
     </style>
@@ -25,9 +25,40 @@
         <img src="./img/fairy.jpg" alt="">
     </div>
 
+    <div class="grupo2">
+        <img src="./img/gato.jpg" alt="">
+        <img src="./img/fairy.jpg" alt="">
+        <img src="./img/fairy.jpg" alt="">
+    </div>
+
+    <div class="grupo3">
+        <img src="./img/fairy.jpg" alt="">
+        <img src="./img/gato.jpg" alt="">
+        <img src="./img/fairy.jpg" alt="">
+    </div>
+
+    <button class="b1">1</button><button class="b2">2</button><button class="b3">3</button>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+        $("div").hide();
+        $(".grupo1").show();
 
+        $(".b1").on("click",function(){
+            $("div").hide();
+            $(".grupo1").show();
+        })
+
+        $(".b2").on("click",function(){
+            console.log("si");
+            $("div").hide();
+            $(".grupo2").show();
+        })
+
+        $(".b3").on("click",function(){
+            $("div").hide();
+            $(".grupo3").show();
+        })
     </script>
 </body>
 </html>
