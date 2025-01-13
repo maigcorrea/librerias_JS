@@ -15,7 +15,14 @@
         $(function(){
             const p=$("<p>Hola</p>");
 
-            //Primera manera, se meten dos funciones dentro del método hover
+            //Primera manera, se meten dos funciones como parámetros dentro del método hover
+            p.hover(function(){
+                //Cuando el mouse entra
+                $(this).text("Adios");
+            },function(){
+                //Cundo el mouse sale
+                $(this).text("Hola");
+            })
 
             //Segunda manera, se hacen dos eventos por separado de mouseIn, mouseLeave
 
