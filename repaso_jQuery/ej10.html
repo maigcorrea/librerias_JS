@@ -24,7 +24,7 @@
     arrastrando -->
 
     <ol>
-        <li draggable="true">Hola</li>
+        <li draggable="true">Hola</li> <!--Esto le dice al navegador que este elemento puede ser arrastrado por el usuario. Sin este atributo, los elementos no serían arrastrables. -->
         <li draggable="true">Mundo</li>
         <li draggable="true">JavaScript</li>
         <li draggable="true">PHP</li>
@@ -32,36 +32,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
-            // $("li").on("drag",function(){
-            //     console.log("si");
-            // })
 
             let draggedElement = null; // Variable para almacenar el elemento que está siendo arrastrado
 
-            // Evento que se dispara cuando el usuario comienza a arrastrar un elemento
+
+            // Evento que se dispara cuando el usuario comienza a arrastrar un elemento. 
+            // Por qué pasamos (e) aquí: Aunque no lo usamos explícitamente en este ejemplo, el evento dragstart incluye información útil como:
+            // e.target: El elemento que se está arrastrando.
+            // e.dataTransfer: Permite almacenar datos asociados al elemento que se arrastra (por ejemplo, identificadores).
+            // Cómo lo usamos: Aquí no necesitamos manipular el evento directamente, pero lo incluimos porque puede ser útil para agregar lógica adicional más adelante.
             $("li").on("dragstart", function(e) {
                 draggedElement = this; // Guarda el elemento que se está arrastrando
                 $(this).addClass("dragging"); // Añade una clase para estilizar el elemento arrastrado
             });
 
-            // Evento que se dispara cuando el usuario termina de arrastrar el elemento
+
+
+
+
+            // Evento que se dispara cuando el usuario termina de arrastrar el elemento. Por qué pasamos e aquí: Igual que con dragstart, no usamos directamente el evento, pero podría ser útil para realizar acciones adicionales relacionadas con el final del arrastre.
             $("li").on("dragend", function(e) {
                 $(this).removeClass("dragging"); // Elimina la clase de estilo al terminar el arrastre
             });
 
-            // Evento que ocurre cuando el elemento arrastrado pasa sobre otro elemento
+
+
+
+
+            // Evento que ocurre cuando el elemento arrastrado pasa sobre otro elemento. e.preventDefault(); es necesario para permitir que el elemento sea un destino válido para soltar. Sin esta línea, el evento drop no se activará.
             $("li").on("dragover", function(e) {
-                e.preventDefault(); // Permite que el elemento se suelte en este lugar (habilita el evento "drop")
+                e.preventDefault(); // Permite que el elemento se suelte en este lugar (habilita el evento "drop"). El evento drop no funcionará correctamente.
             });
 
-            // Evento que se dispara cuando el usuario suelta el elemento sobre otro
+
+
+
+            // Evento que se dispara cuando el usuario suelta el elemento sobre otro.e.preventDefault();: Impedimos el comportamiento predeterminado, que podría ser abrir un enlace o recargar la página dependiendo del contenido del elemento.
+            // Aunque no lo usamos directamente aquí, e.target podría ser útil si queremos inspeccionar el elemento exacto donde se suelta el objeto.
             $("li").on("drop", function(e) {
-                e.preventDefault(); // Evita el comportamiento por defecto (como abrir un enlace)
+                e.preventDefault(); // Evita el comportamiento por defecto (como abrir un enlace si el <li> contiene uno)
                 
+                // Comprobamos que el elemento que se suelta no sea el mismo donde se suelta.
                 if (draggedElement !== this) { 
                     // Si el elemento arrastrado no es el mismo que el elemento donde se suelta
-                    $(this).before(draggedElement); 
-                    // Mueve el elemento arrastrado antes del elemento donde se suelta
+                    $(this).before(draggedElement); // Mueve el elemento arrastrado antes del elemento donde se suelta.  Esto reordena los elementos en la lista.
                 }
             });
         })
