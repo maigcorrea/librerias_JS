@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            cursor:grab;
+        }
+    </style>
+</head>
+<body>
+    <!-- Crea una lista con ítems numerados y permítele al usuario reordenarlos
+    arrastrando -->
+
+    <ol>
+        <li>Hola</li>
+        <li>Mundo</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+    </ol>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("li").on("drag",function(){
+                console.log("si");
+            })
+        })
+    </script>
+</body>
+</html>
