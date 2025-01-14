@@ -26,19 +26,21 @@
 
                 console.log($("li").text().indexOf(valor));
 
-                // if($("li").text().indexOf(value)!=-1){
-                //     $("li").show();
-                // }else{
-                //     $("li").hide();
-                // }
+                if($("ul li").indexOf(valor)!=-1){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
 
-                $.each($("li"),function(key,value){
-                    if(value==valor){
-                        $(value).show();
-                    }else{
-                        $(value).hide();
-                    }
-                })
+                // $.each($("li"),function(key,value){
+                //     if(value==valor){
+                //         $(value).show();
+                //     }else{
+                //         $(value).hide();
+                //     }
+                // })
+
+                // if($("li").filter(""))
                 
             })
             
