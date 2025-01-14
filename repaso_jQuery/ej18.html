@@ -35,9 +35,24 @@
     <script>
         $(function(){
             console.log($("form input:nth-child(1)").val());
-            $("form input:nth-child(1)").on("change",function(){
-                let src=$(this).val();
-                $("img").attr("src",src);
+            $("form input:nth-child(1)").on("change",function(event){
+                // Obtenemos el archivo seleccionado
+                let file = event.target.files[0];
+
+                // Verificamos si se seleccionó un archivo
+                if (file) {
+                    // Creamos un FileReader para leer el archivo
+                    let reader = new FileReader();
+
+                    // Definimos la función que se ejecutará una vez cargado el archivo
+                    reader.onload = function(e) {
+                        // Establecemos la URL del archivo como src del img
+                        $("img").attr("src", e.target.result).show();
+                    };
+
+                    // Leemos el contenido del archivo como una URL
+                    reader.readAsDataURL(file);
+                }
             });
         })
     </script>
