@@ -26,12 +26,15 @@
 
                 console.log($("li").text().indexOf(valor));
 
-                $.each("ul li",function(key,value){
-                    if(value.indexOf(valor)!=-1){
-                        value.show();
-                    }else{
-                        value.hide();
+                $.each($("ul li"),function(){
+                    let texto=$(this).text().toLowerCase();//Se saca el texto de cada elemento
+
+                    if (texto.indexOf(valor) !== -1) {
+                        $(this).show();  // Mostrar <li> si el texto contiene el valor
+                    } else {
+                        $(this).hide();  // Ocultar <li> si el texto no contiene el valor
                     }
+                    
                 })
 
                 // $.each($("li"),function(key,value){
