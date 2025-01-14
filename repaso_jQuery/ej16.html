@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Implementa una barra de búsqueda que permita al usuario filtrar
+    elementos de una lista. -->
+    <input type="text" name="" id="">
+
+    <ul>
+        <li>Html</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+        <li>Bases de datos</li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("input").on("input",function(e){
+                let valor=$(e.target).val();
+
+                console.log($("li").text().indexOf(valor));
+
+                // if($("li").text().indexOf(value)!=-1){
+                //     $("li").show();
+                // }else{
+                //     $("li").hide();
+                // }
+
+                $.each($("li"),function(key,value){
+                    if(value==valor){
+                        $(value).show();
+                    }else{
+                        $(value).hide();
+                    }
+                })
+                
+            })
+            
+        })
+
+        //e.target hace referencia al elemento del DOM que generó el evento (en este caso, el input).
+        // $(e.target) convierte ese elemento en un objeto jQuery, lo cual te permite usar métodos como .val() para obtener el valor del input.
+    </script>
+</body>
+</html>
