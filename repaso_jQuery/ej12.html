@@ -10,6 +10,7 @@
     <!-- Crea un menú con elementos que se desplegarán al pasar el mouse sobre
     ellos -->
     <nav>
+        <p>Menu</p>
         <ul>
             <li>Home</li>
             <li>Cursos</li>
@@ -19,7 +20,25 @@
     </nav>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+        $(function(){
+            $("ul").hide();
 
+            //Primera forma
+            $("p").hover(function(){
+                $("ul").slideDown();
+            },function(){
+                $("ul").slideUp();
+            })
+
+            //Segunda forma
+            // $("p").on("mouseenter",function(){
+            //     $("ul").slideDown();
+            // })
+
+            // $("p").on("mouseleave",function(){
+            //     $("ul").slideUp();
+            // })
+        })
     </script>
 </body>
 </html>
