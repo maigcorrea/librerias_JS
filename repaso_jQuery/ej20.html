@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img-container{
+            border: solid 1px black;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .img-container img{
+            width: 100%;
+        }
+
+        .modal{
+            width: fit-content;
+            padding: 20px;
+            border: solid 1px black;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Crea una ventana modal que se cierre si el usuario hace clic fuera de ella. -->
+    <button>Abrir modal</button>
+
+    <div class="modal">
+        <div class="img-container">
+            <img src="./img/fairy.jpg" alt="">
+        </div>
+        <p>Esto es un modal</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".modal").hide();
+
+            //Abrir el modal al hacer click en el botón
+            $("button").on("click",function(){
+                $(".modal").show();
+            })
+
+            //Cerrar el modal al hacer click sobre cualquier parte de la pantalla
+            $("body").on("click",function(){
+                $(".modal").hide();
+            })
+
+            //Evitar el cierre del modal si se pincha sobre él mismo
+            $(".modal").on("click",function(event){
+                //Se usa stopPropagation para evitar que el clic dentro del modal se propague al body, lo que cerraría el modal.
+                event.stopPropagation();//Esto evita que el click en el elemento se propage a elementos padres
+            })
+
+            //Evitar el cierre del modal si se hace click sobre el botón
+            $("button").on("click",function(event){
+                //Se usa stopPropagation para evitar que el clic dentro del botón se propague al body, lo que abriría el modal. También se aplica para evitar conflictos
+                event.stopPropagation();
+            })
+
+
+
+            //APUNTES DE stopPropagation()
+            /*
+                event.stopPropagation() es un método en JavaScript que se usa para detener la propagación del evento a través de la jerarquía de elementos (también conocida como bubbling o capturing). Esto significa que el evento no "subirá" (o "bajará", dependiendo de cómo esté configurada la propagación) a otros elementos del DOM que lo estén escuchando.
+
+                Imagina que tienes un contenedor con varios elementos dentro de él, y quieres que al hacer clic en uno de esos elementos se haga algo, pero no quieres que se ejecute la acción en el contenedor superior.
+
+            */
+
+            
+        })
+    </script>
+</body>
+</html>
