@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- Crea un contador que aumente cada vez que se haga clic en un botón. -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            let num=0;
+            const cont=$("<p></p>").text(num);
+
+            const button=$("<button>Click</button>");
+            button.on("click",function(){
+                num++;
+                cont.text(num);
+            })
+
+            $("body").append(cont,button);
+        })
+    </script>
+</body>
+</html>
