@@ -26,11 +26,13 @@
 
                 console.log($("li").text().indexOf(valor));
 
-                if($("ul li").indexOf(valor)!=-1){
-                    $(this).show();
-                }else{
-                    $(this).hide();
-                }
+                $.each("ul li",function(key,value){
+                    if(value.indexOf(valor)!=-1){
+                        value.show();
+                    }else{
+                        value.hide();
+                    }
+                })
 
                 // $.each($("li"),function(key,value){
                 //     if(value==valor){
