@@ -4,12 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .primario{
+            width: 100px;
+            height: 50px;
+            border: solid 1px black;
+            border-radius: 25px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .secundario{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: black;
+            position: absolute;
+        }
+
+        .desplazar{
+            right: 0px;
+        }
+
+        .oscuro{
+            background-color: black;
+        }
+
+        .primarioOscuro{
+            border: solid 1px white;
+        }
+
+        .secundarioOscuro{
+            background-color: white;
+        }
+
+        .h1Oscuro{
+            color: white;
+        }
+
+    </style>
 </head>
 <body>
     
+    <!-- Implementa un interruptor para alternar entre un modo oscuro y un modo
+    claro en la página. -->
+    <div class="primario">
+        <div class="secundario">
+
+        </div>
+    </div>
+
+    <h1>Hola mundo</h1>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        
+        $(function(){
+            $(".primario").on("click",function(){
+                $(".secundario").toggleClass("desplazar");
+                $(".secundario").toggleClass("secundarioOscuro");
+                $(".primario").toggleClass("primarioOscuro");
+                $("h1").toggleClass("h1Oscuro");
+                $("body").toggleClass("oscuro");
+            })
+        })
     </script>
 </body>
 </html>
