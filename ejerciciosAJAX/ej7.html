@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carrousel{
+            max-width:1000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagenes{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="carrousel">
+        <div class="imagenes">
+            <img src="https://picsum.photos/id/236/1000/400" alt="">
+            <img src="https://picsum.photos/id/235/1000/400" alt="">
+            <img src="https://picsum.photos/id/212/1000/400" alt="">
+        </div>
+
+        <div class="navegacion">
+            <button class="next">Siguiente</button>
+            <button class="prev">Anterior</button>
+        </div>
+    </div>
+    
+    <!-- Carrusel básico
+    Crea un carrusel sencillo donde un contenedor con imágenes se desplace
+    horizontalmente al hacer clic en los botones "Siguiente" y "Anterior".  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+           let indiceActual=0;
+           let imagenes=$(".imagenes img");
+           let imgTotal=imagenes.length;
+            
+            function mover(){
+                $(".imagenes").animate({
+                    transform:`translateX(${-indiceActual*1000})`
+                })
+                // $(".imagenes").css("transform",`translateX(${-indiceActual*1000}px)`);
+                console.log("hola");
+            }
+
+            $(".next").on("click",function(){
+                indiceActual++;
+                mover();
+            })
+        })
+    </script>
+</body>
+</html>
