@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Expansión circular
+    Anima un círculo para expandirlo y contraerlo -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            $("body").append(div);
+
+            setInterval(function(){
+                div.animate({
+                    scale:2
+                }).animate({
+                    scale:1
+                })
+            },1000)
+        })
+    </script>
+</body>
+</html>
