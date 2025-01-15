@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .barra{
+            width: 100px;
+            height: 30px;
+            border: solid 1px black;
+            overflow: hidden;
+        }
+
+        .contenido{
+            width: 0;
+            height: 30px;
+            background-color: red;
+        }
+
+    </style>
 </head>
 <body>
     
+    <!-- Barra de carga animada
+    Crea una barra de progreso que se llene al hacer clic en un botón.  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div class='barra'><div class='contenido'></div></div>");
+            const button=$("<button>Click</button>");
+            let ancho=20;
+            $("body").append(div,button);
+
+            button.on("click",function(){
+                $(".contenido").animate({
+                    width:ancho
+                })
+                ancho+=20;
+            })
+
+        })
+    </script>
 </body>
 </html>
