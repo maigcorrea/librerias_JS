@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cambiar tamaño y opacidad
+    Haz que un cuadro crezca y reduzca su opacidad cuando pases el mouse sobre él -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            $("body").append(div);
+
+            div.hover(function(){
+                $(this).animate({
+                    scale:"2",
+                    opacity:"0.2",
+                },800)
+            },function(){
+                $(this).animate({
+                    scale:"1",
+                    opacity:"1",
+                },800)
+            })
+
+            //Otra forma
+            // div.on("mouseenter",function(){
+            //     $(this).animate({
+            //         scale:"2",
+            //         opacity:"0.2",
+            //     })
+            // })
+
+            // div.on("mouseleave",function(){
+            //     $(this).animate({
+            //         scale:"1",
+            //         opacity:"1",
+            //     })
+            // })
+        })
+    </script>
+</body>
+</html>
