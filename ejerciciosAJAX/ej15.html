@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         /* div{
+            max-width: 50%;
+            border: solid 1px black;
+            padding: 10px;
+            margin: 10px auto;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-between; */
+            /* p{ */
+                /* display: none; */
+                /* width: 100%;
+            }
+            button{
+                background-color: pink;
+                border:none;
+                padding: 10px;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        } */
+
+        .mostrar{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Efecto acordeón
+    Crea una lista donde los elementos se expandan al hacer clic -->
+    <ul>
+    <li class="item" style="border:1px solid black; margin:10px; padding:10px;">Item 1</li>
+    <li class="item" style="border:1px solid black; margin:10px; padding:10px;">Item 2</li>
+    <li class="item" style="border:1px solid black; margin:10px; padding:10px;">Item 3</li>
+</ul>
+
+<script>
+    $(".item").click(function () {
+        $(this).animate({ height: "100px" }, 800).siblings().animate({ height: "30px" }, 800);
+    });
+</script>
+</body>
+</html>
