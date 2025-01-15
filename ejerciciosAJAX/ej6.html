@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Animación de rebote
+    Simula un rebote horizontal haciendo que un cuadro se mueva de izquierda a derecha.  -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            $("body").append(div);
+            let dcha=100;
+            let izda=100;
+
+            div.on("click",function(){
+                $(this).animate({
+                    left:dcha
+                },300).animate({
+                    left:0
+                },300)
+
+            })
+        })
+    </script>
+</body>
+</html>
