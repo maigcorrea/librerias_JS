@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Animación de un cuadro hacia la derecha
+    Crea un div que se mueva 300px hacia la derecha al hacer clic. -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            let dcha=300;
+            $("body").append(div);
+
+            div.on("click",function(){
+                $(this).animate({
+                    left:dcha,
+                })
+                dcha+=300;
+            })
+        })
+    </script>
+</body>
+</html>
