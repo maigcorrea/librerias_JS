@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Movimiento combinado (derecha y abajo)
+    Haz que un cuadro se mueva diagonalmente al hacer doble clic.  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            $("body").append(div);
+            let dcha=300;
+            let abajo=300;
+
+            div.on("dblclick",function(){
+                $(this).animate({
+                    left:dcha,
+                    top:abajo,
+                })
+                dcha+=300;
+                abajo+=300;
+            })
+        })
+    </script>
+</body>
+</html>
