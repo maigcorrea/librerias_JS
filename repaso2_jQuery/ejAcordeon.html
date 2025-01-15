@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            height: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <span>Texto1</span><button>+</button>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, dicta!</p>
+    </div>
+    <div class="contenedor">
+        <span>Texto2</span><button>+</button>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, dicta!</p>
+    </div>
+    <div class="contenedor">
+        <span>Texto3</span><button>+</button>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, dicta!</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            
+
+            $("button").each(function(){
+                $(this).on("click",function(){
+                    // $(this).next().slideToggle();
+                    // if($(this).text()=="+"){
+                    //     $(this).text("-");
+                    // }else{
+                    //     $(this).text("+");
+                    // }
+                    $(this).next().animate({
+                        height:50,
+                        opacity:1
+                    })
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>
