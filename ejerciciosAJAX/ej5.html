@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top:70vh;
+            
+
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Ocultar con animación
+    Desplaza un cuadro hacia arriba y reduce su opacidad hasta desaparecer.  -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const div=$("<div></div>");
+            $("body").append(div);
+            
+            // setTimeout(function(){
+            //     div.css({
+            //         top:"0px",
+                    // opacity:"0",
+            //         transition: "all 5s ease-in-out"
+            //     })
+            // },500)
+
+
+            //FORMA DE REDU
+            div.on("click",function(){
+                $(this).animate({
+                    top:"-50px",
+                    opacity:0
+                },1000)
+            })
+        })
+    </script>
+</body>
+</html>
