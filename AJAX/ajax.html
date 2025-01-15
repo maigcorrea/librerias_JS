@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .caja{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="caja">
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //AJAX
+            const ul=$("<ul></ul>");
+            var miApi="https://dummyjson.com/products";
+
+            $.ajax({
+                type:"GET",
+                url:miApi,
+                success:function(respuesta){
+                //   console.log(respuesta.products); 
+                  $(respuesta.products).each(function(i,e){
+                      ul.append(`<li>${this.title}</li>`);
+                    // console.log(e.title);
+                  });
+
+                  $("body").append(ul);
+                }
+            })
+
+            
+            $(".caja").on("click",function(){
+                $(this).animate({
+                    width:"500",
+                    scale:"2"
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>
