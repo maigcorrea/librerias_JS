@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            const miApi="https://www.themealdb.com/api/json/v1/1/categories.php";
+
+            $.ajax({
+                type:"GET",
+                url:miApi,
+                success:function(respuesta){
+                    // console.log(respuesta.categories);
+
+                    $(respuesta.categories).each(function(){
+                        console.log(this.strCategory)
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+</html>
