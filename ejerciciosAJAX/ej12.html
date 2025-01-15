@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            position: relative;
+        }
+
+        div{
+            width: 100px;
+            height: 20px;
+            background-color: red;
+            position: absolute;
+            top: 10px;
+            transition: top 1s ease-in-out;
+        }
+
+        .mover{
+            top:50px;
+            transition: top 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Mostrar/ocultar contenido con deslizamiento
+    Crea un cuadro que se desplace hacia abajo para mostrar un mensaje y luego hacia
+    arriba para ocultarlo.  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").append("<p>hola mundo</p><div></div>");
+            $("div").on("click",function(){
+                $(this).toggleClass("mover");
+            })
+        })
+    </script>
+</body>
+</html>
