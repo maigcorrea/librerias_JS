@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            width: 1000px;
+            height: 400px;
+            border: solid 2px red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagenes{
+            display: flex;
+            position: absolute;
+        }
+
+        .next,.prev{
+            position: absolute;
+            top:50%;
+            padding: 10px;
+            transform: translateY(-50%);
+        }
+
+        .next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="imagenes">
+            <img src="https://picsum.photos/id/236/1000/400" alt="">
+            <img src="https://picsum.photos/id/235/1000/400" alt="">
+            <img src="https://picsum.photos/id/212/1000/400" alt="">
+        </div>
+
+        <div class="navegacion">
+            <button class="next">Siguiente</button>
+            <button class="prev">Anterior</button>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            let indiceActual = 0;
+
+            function mover(){
+                $(".imagenes").animate({
+                    left:`${-indiceActual*1000}`
+                })
+            }
+
+            $(".next").on("click",function(){
+                    indiceActual++;
+                    mover();
+                    $(".prev").show();
+
+                if(indiceActual===$(".imagenes img").length-1){
+                    $(this).hide();
+                }
+            })
+
+            if(indiceActual===0){
+                $(".prev").hide();
+            }
+
+            $(".prev").on("click",function(){
+                indiceActual--;
+                mover();
+
+                if(indiceActual===0){
+                    $(".prev").hide();
+                }
+
+                if(indiceActual<$(".imagenes img").length-1){
+                    $(".next").show();
+                }
+
+            })
+        })
+    </script>
+</body>
+</html>
